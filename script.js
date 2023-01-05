@@ -12,6 +12,7 @@ const name = document.getElementById("city-name");
 const api = "8cd8a1b346b6a8be26e4c9e39f2b369e";
 
 //  When search button is clicked, read the city name typed by the user
+// added the 5 day forecast with the consts
 function weatherDashboard(city) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -81,6 +82,7 @@ function weatherDashboard(city) {
     });
 }
 
+// added click function to re click the history tabs
 search.addEventListener("click", function () {
   const city = input.value;
   searchHistory.push(city);
@@ -89,12 +91,14 @@ search.addEventListener("click", function () {
   render();
 });
 
+// local stoarge 
 clear.addEventListener("click", function () {
   searchHistory = [];
   localStorage.clear();
   render();
 });
 
+// saves any city searched and could re click to bring it back
 function render() {
   history.innerHTML = "";
   for (let i = 0; i < searchHistory.length; i++) {
